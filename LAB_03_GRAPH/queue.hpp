@@ -8,7 +8,7 @@ typedef struct graph {
     int vertexes;
     int **m;             //matrix n x n
     int *visited;
-};
+} alias;
 
 graph *graph_create(int vertexes);
 void graph_init(graph *g);
