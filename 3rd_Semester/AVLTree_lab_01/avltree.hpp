@@ -2,46 +2,49 @@
 #include <cstring>
 #include <ctime>
 
-struct avl_node {
+struct avl {
     int key;
     char *value;
 
     int height;
-    avl_node *left;
-    avl_node *right;
+    avl *left;
+    avl *right;
 };
 
-void free_avl_tree(avl_node *tree);
+void free_avl_tree(avl *tree);
 
-avl_node *lookup(avl_node *tree, int key);
+avl *lookup(avl *tree, int key);
 
-avl_node *create_tree(int key, char *value);
+avl *create_tree(int key, char *value);
 
-int avltree_height(avl_node *tree);
+int height(avl *tree);
 
-int avltree_balance(avl_node *tree);
+int bfactor(avl *tree);
 
-avl_node *avltree_rl_rotate(avl_node *P);
+avl *avltree_rl_rotate(avl *P);
 
-avl_node *avltree_lr_rotate(avl_node *P);
+avl *avltree_lr_rotate(avl *P);
 
 int maxheight(int h1, int h2);
 
-avl_node *avltree_left_rotate(avl_node *tree);
+avl *avltree_left_rotate(avl *tree);
 
-avl_node *avltree_right_rotate(avl_node *tree);
+avl *avltree_right_rotate(avl *tree);
 
-avl_node *avltree_add(avl_node *tree, int key, char *value);
+avl *avltree_add(avl *tree, int key, char *value);
 
-avl_node *node_deletion(avl_node *tree, int key);
+avl *node_deletion(avl *tree, int key);
 
-void tree_out(avl_node* tree,int level);
+void tree_out(avl* tree,int level);
 
 
 //Дополнительные функции
-avl_node *fixbalance(avl_node *tree);
+avl *fixbalance(avl *tree);
 //Поиск минимального элемента
-avl_node *min(avl_node *tree);
-avl_node *delnode(avl_node *tree, int key);
+avl *min(avl *tree);
+//Поиск максимального элемента
+avl* max(avl* tree);
+//Удаление узла из дерева
+avl *delnode(avl *tree, int key);
 //Возвращает минимальный узел для правого поддерева, для последующего удаления
-avl_node *mindel(avl_node *tree);
+avl *mindel(avl *tree, avl *parent);

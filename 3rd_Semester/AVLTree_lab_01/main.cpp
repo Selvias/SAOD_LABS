@@ -2,15 +2,15 @@
 #include <ctime>
 #include <iomanip>
 
-const unsigned int count = 12;
-const unsigned int delay = 5000;
+const unsigned int count = 5;
+const unsigned int delay = 10000;
 
 int main()
 {
-    srand(time(NULL));
+    // srand(time(NULL));
 
     char *str = (char *)"string";
-    avl_node *root = create_tree(rand() % 100, str);
+    avl *root = create_tree(rand() % 1000, str);
 
     for (int i = 1; i < int(count); i++)
     {
@@ -24,10 +24,22 @@ int main()
             std::cout << std::fixed << std::setprecision(8); 
             double t = double((double)(end - start) / CLOCKS_PER_SEC);
             std::cout << "Time (i = " << i << ") : " << t << std::endl;
+            std::cout << "HEIGHT : " << root->height << " KEY : " << (min(root))->key << std::endl;
+            std::cout << "MIN : " << (min(root))->key << std::endl;
+            std::cout << "MAX : " << (max(root))->key << std::endl;
+
+            std::cout << "ROOT HEIGHT : " << root->height << std::endl;
         }
+
     }   
 
-    delnode(root, 3);
+    tree_out(root, 0);
+    std::cout << "______________________________\n" << std::endl;
+
+    // delnode(root, 2);
+    root = delnode(root, 1);
+    root = delnode(root, 3);
+    root = delnode(root, 4);
 
     tree_out(root, 0);
 
